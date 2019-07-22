@@ -33,7 +33,7 @@
     "react-dom": "^16.8.6"
   },
   "scripts": {
-    "lint": "eslint './src/**/*.js*'",
+    "lint": "eslint './**/**/*.js*'",
     "deploy": "webpack -p && gh-pages -d dist",
     "dev": "next",
     "build": "next build",
