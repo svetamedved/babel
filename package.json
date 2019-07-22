@@ -29,14 +29,13 @@
   "dependencies": {
     "fsevents": "^2.0.7",
     "next": "^9.0.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.1"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "scripts": {
-    //"start": "webpack-dev-server --mode development",
     "lint": "eslint './src/**/*.js*'",
-    "deploy": "webpack -p && gh-pages -d dist"
-     "dev": "next",
+    "deploy": "webpack -p && gh-pages -d dist",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   }
