@@ -1,8 +1,22 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import { Button } from 'reactstrap';
 
-
-function Home() {
-  return <div>Welcome to Next.js!</div>;
+export default (props) => {
+  return (
+    <div>
+    <Button color="danger">Danger!</Button>
+    </div>
+  );
 }
 
-export default Home;
+const PreferredExample = (props) => {
+  return (
+    <p>
+      This is a <a href="#" id="TooltipExample">tooltip</a> example.
+      <Tooltip target="TooltipExample">
+        <TooltipContent/>
+      </Tooltip>
+    </p>
+  );
+}
