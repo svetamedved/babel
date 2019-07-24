@@ -27,6 +27,10 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "airtable": "^0.7.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-next": "^1.0.5",
     "fsevents": "^2.0.7",
     "next": "^9.0.2",
     "react": "^16.8.6",

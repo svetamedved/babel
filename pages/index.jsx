@@ -1,8 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import { Button } from 'reactstrap';
+import Onboarding from '../components/onboarding'
 
-
-function Home() {
-  return <div>Welcome to Next.js!</div>;
+export default (props) => {
+  return (
+    <div>
+    <Onboarding/>
+    </div>
+  );
 }
-
-export default Home;
