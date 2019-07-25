@@ -38,6 +38,9 @@
     "react-sortable-tree": "^2.6.2",
     "reactstrap": "^8.0.1"
   },
+  "engines": {
+    "node": "12.6.0"
+  },
   "scripts": {
     "lint": "eslint './**/**/*.js*'",
     "deploy": "webpack -p && gh-pages -d dist",
@@ -48,4 +51,3 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
-

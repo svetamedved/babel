@@ -13,7 +13,7 @@ export default (props) => {
   return (
     <div>
     <Project projectId={projectId}/>
-    <a href="/">Back</a>
+    <Button color="primary"><a href="/">Back</a></Button>
     </div>
   );
 }
