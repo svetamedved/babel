@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Airtable from '../api/airtable';
 
-function Onboarding() {
+
+function Products() {
   const [products, setProducts] = useState(null);
   const airtable = new Airtable('Products');
 
@@ -25,4 +26,4 @@ function Onboarding() {
   );
 }
 
-export default Onboarding;
+export default Products;
