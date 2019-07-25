@@ -1,8 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import App, { Container } from 'next/app';
-import { Button } from 'reactstrap';
-import Link from 'next/link';
-import Airtable from '../api/airtable'
+import React, { useEffect, useState } from 'react';
+import Airtable from '../api/airtable';
 
 function Project(props) {
   const [product, setProduct] = useState(null);
