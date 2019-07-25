@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  babel:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    command: npm run start
+    container_name: babel
+    environment:
+      PORT: 3000
+    ports:
+      - "0.0.0.0:3000:3000"
+#    volumes:
+#      - "./:/usr/src/app"
