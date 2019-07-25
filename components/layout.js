@@ -10,7 +10,16 @@ class Layout extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col>
+          <Col sm="4">
+            Some text
+          </Col>
+          <Col sm="4">
+            Some text
+          </Col>
+          <Col sm="4">
+            Some text
+          </Col>
+          <Col sm="4">
             Some text
           </Col>
         </Row>
