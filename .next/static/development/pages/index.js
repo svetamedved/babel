@@ -34193,7 +34193,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!*******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fsvetlanaguryanova-berrios%2FDesktop%2Fbabel%2Fpages%2Findex.jsx ***!
   \*******************************************************************************************************************************************/
@@ -34216,5 +34216,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
