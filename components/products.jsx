@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Col } from 'reactstrap';
 import Link from 'next/link';
+import { ceil } from 'mathjs'
 import Airtable from '../api/airtable';
 
 
@@ -12,17 +14,15 @@ function Products() {
   });
 
   return (
-    <ul>
-      {!products ? (
-        <div>Loading...</div>) : (
-        products.map(item => (
-          <li key={item.get('Name')}>
-            <Link href={{ pathname: '/editor', query: { projectId: item.id } }}>
-              <a>{item.get('Name')}</a>
-            </Link>
-          </li>
-        ))) }
-    </ul>
+    !products ? (<Col sm={12}>Loading...</Col>) : (
+      products.map(item => (
+        <Col sm={ceil(products.length / 12)}>
+          <Link href={{ pathname: '/editor', query: { projectId: item.id } }}>
+            <a>{item.get('Name')}</a>
+          </Link>
+        </Col>
+      ))
+    )
   );
 }
 
