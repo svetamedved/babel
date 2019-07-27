@@ -31,11 +31,13 @@
     "airtable": "^0.7.0",
     "bootstrap": "^4.3.1",
     "bootstrap-next": "^1.0.5",
+    "megadraft": "^0.6.5",
     "next": "^9.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-sortable-tree": "^2.6.2",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.0.1",
+    "string-format": "^2.0.0"
   },
   "scripts": {
     "lint": "eslint './**/**/*.js*'",

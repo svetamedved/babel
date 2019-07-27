@@ -30,4 +30,47 @@ export default class Airtable {
       callback(record);
     });
   }
+
+  findMany(ids, callback) {
+    var fetchedRecords = [];
+    this.table.select().eachPage(function page(records, fetchNextPage) {
+      // This function (`page`) will get called for each page of records.
+      records.forEach(function(record) {
+        if (ids.indexOf(record.id) >= 0)
+        {
+          fetchedRecords.push(record);
+        }
+      });
+
+      // To fetch the next page of records, call `fetchNextPage`.
+      // If there are more records, `page` will get called again.
+      // If there are no more records, `done` will get called.
+      fetchNextPage();
+    }, function done(err) {
+      if (err) { console.error(err); return; }
+      callback(fetchedRecords);
+    });
+  }
+
+
+  filterData(filter, callback) {
+    var fetchedRecords = [];
+    this.table.select({
+      filterByFormula: filter
+    }).eachPage(function page(records, fetchNextPage) {
+      // This function (`page`) will get called for each page of records.
+      records.forEach(function(record) {
+        fetchedRecords.push(record);
+      });
+
+      // To fetch the next page of records, call `fetchNextPage`.
+      // If there are more records, `page` will get called again.
+      // If there are no more records, `done` will get called.
+      fetchNextPage();
+    }, function done(err) {
+      if (err) { console.error(err); return; }
+      // console.log(fetchedRecords)
+      callback(fetchedRecords);
+    });
+  }
 }

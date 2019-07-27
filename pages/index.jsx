@@ -1,47 +1,33 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect } from 'react';
-import Airtable from '../api/airtable';
+import React, { Component } from 'react';
 import { Button, Container, Row, Col } from 'reactstrap';
 import Products from '../components/products';
-import Example from '../components/popover';
-import Link from 'next/link';
+import Navigation from '../components/navbar';
 
 export default () => {
-  const [products, setProducts] = useState(null);
-  const airtable = new Airtable('Products');
-  useEffect(() => {
-    airtable.listData(setProducts);
-  });
+  const rowStyle = {
+    margin: '0 0 25px'
+  };
+
+  const h1Style = {
+    margin: '0 0 25px'
+  };
 
   return (
-      !products ? (
-        <div>Loading...</div>) : (
-          <Container Fluid>
-          products.map(item => (
-            <Col sm='3'> key={item.get('Name')}>
-              <Button>
-              <Link href={{ pathname: '/editor', query: { projectId: item.id } }}>
-                <a>{item.get('Name')}</a>
-              </Link>
-              </Button>
-            </Col>
-          </Container>
-        )
-      )
-    )
-  }
-
-  );
-}
-
-
-    /*<Container fluid>
-      <Row>
-      <Col sm="3">
-        <Products/>
-
-        <Example/>
+    <Container fluid>
+      <Row style={rowStyle}>
+        <Col>
+          <Navigation title="Babelfish" />
+        </Col>
       </Row>
-    </Container>*/
-//   );
-// };
+      <Row>
+        <Col>
+          <h1 align="center" style={h1Style}>Choose your product</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Products/>
+      </Row>
+    </Container>
+  );
+};
