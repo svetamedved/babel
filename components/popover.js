@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import {Button,
         Modal,
+        Input,
         ModalHeader,
         ModalBody,
         ModalFooter,
+        FormGroup,
         Carousel,
         CarouselItem,
         CarouselControl,
@@ -33,18 +35,24 @@ const Popover = (props) => {
       return (
         <CarouselItem key={item.id}>
           <CarouselCaption captionText={item.get('Question')} />
+          <FormGroup>
+          <Input type="textarea" name="text" id="exampleText" />
+        </FormGroup>
         </CarouselItem>
       );
     });
   };
 
   const nextSlide = useCallback(() => {
-  }, []);
+    if (activeIndex !== questions.length - 1)
+    {
+      setActiveIndex(activeIndex + 1);
+    }
+  }, [questions]);
 
   const closePopover = useCallback(() => {
-    setModal(!modal)
+    setModal(!modal);
   }, []);
-
 
   return (
      !questions ? (
