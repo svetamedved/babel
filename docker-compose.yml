@@ -1,17 +1,49 @@
 version: '3.5'
 services:
-  babel:
-    build:
-      context: .
-      dockerfile: ./dockerfile
-    command: npm run start
-    container_name: babel
-    hostname: svetlanaberrios.com
-    domainname: svetlanaberrios.com
-    environment:
-      PORT: 3000
-    ports:
-      - "0.0.0.0:3000:3000"
-      - "0.0.0.0:80:3000"
-#    volumes:
-#      - "./:/usr/src/app"
+    babel:
+      build:
+        context: .
+        dockerfile: ./dockerfile
+      command: npm run start
+      container_name: babel
+      environment:
+        - PORT=3000
+      ports:
+        - "0.0.0.0:3000:3000"
+      networks:
+        - svetlanaberrios
+    nginx:
+      image: umputun/nginx-le:latest
+      restart: always
+      container_name: nginx
+      hostname: nginx
+      domainname: svetlanaberrios.com
+      logging:
+        driver: json-file
+        options:
+          max-size: "10m"
+          max-file: "5"
+      volumes:
+        - ./etc/ssl:/etc/nginx/ssl
+        - ./etc/service.conf:/etc/nginx/service.conf
+      ports:
+        - "80:80"
+        - "443:443"
+      links:
+        - babel:babel
+      networks:
+        svetlanaberrios:
+          aliases:
+            - www.svetlanaberrios.com
+            - svetlanaberrios.com
+      environment:
+        - TZ=UTC
+        - LETSENCRYPT=true
+        - LE_EMAIL=digitaldistortion@ya.ru
+        - LE_FQDN=www.svetlanaberrios.com,svetlanaberrios.com
+networks:
+  svetlanaberrios:
+    name: svetlanaberrios
+    driver: bridge
+    ipam:
+      driver: default
