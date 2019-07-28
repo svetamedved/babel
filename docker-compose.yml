@@ -6,6 +6,7 @@ services:
       dockerfile: ./dockerfile
     command: npm run start
     container_name: babel
+    hostname: svetlanaberrios.com
     environment:
       PORT: 3000
     ports:
