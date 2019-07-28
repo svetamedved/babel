@@ -36,7 +36,7 @@ export default (props) => {
         (
           <Row>
             <Editor product={product} />
-            <Popover modal={true} product={product} />
+            <Popover product={product} />
           </Row>
         )}
     </Container>

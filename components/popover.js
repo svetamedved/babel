@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {Button,
         Modal,
         ModalHeader,
@@ -14,13 +14,17 @@ import Airtable from '../api/airtable';
 const Popover = (props) => {
   const [questions, setQuestions] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [modal, setModal] = useState(true);
   const airtable = new Airtable('Questions');
 
   useEffect(() => {
     if (!questions)
     {
       var questionIds = props.product.get('Questions');
-      airtable.findMany(questionIds, setQuestions);
+      if (questionIds)
+      {
+        airtable.findMany(questionIds, setQuestions);
+      }
     }
   });
 
@@ -34,22 +38,28 @@ const Popover = (props) => {
     });
   };
 
+  const nextSlide = useCallback(() => {
+  }, []);
+
+  const closePopover = useCallback(() => {
+    setModal(!modal)
+  }, []);
+
+
   return (
      !questions ? (
       <p>Loading...</p>) : (
-      <Modal centered isOpen={props.modal} className={props.className}>
+      <Modal centered toggle={closePopover} isOpen={modal} className={props.className}>
         <ModalHeader>To start answer a few questions</ModalHeader>
         <ModalBody>
           <Carousel activeIndex={activeIndex}>
             {renderSlides(questions)}
             <CarouselIndicators items={questions} activeIndex={activeIndex} />
-            <CarouselControl direction="prev" directionText="Previous" />
-            <CarouselControl direction="next" directionText="Next" />
           </Carousel>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary">Do Something</Button>{' '}
-          <Button color="secondary">Cancel</Button>
+          <Button color="secondary" onClick={nextSlide}>Next</Button>{' '}
+          <Button color="secondary" onClick={closePopover}>Cancel</Button>
         </ModalFooter>
       </Modal>
   ));
