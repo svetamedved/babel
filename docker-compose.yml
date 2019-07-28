@@ -6,8 +6,6 @@ services:
         dockerfile: ./dockerfile
       command: npm run start
       container_name: babel
-      hostname: svetlanaberrios.com
-      domainname: svetlanaberrios.com
       environment:
         - PORT=3000
       ports:
@@ -16,16 +14,16 @@ services:
         - svetlanaberrios
     nginx:
       image: umputun/nginx-le:latest
-      hostname: nginx
       restart: always
       container_name: nginx
+      hostname: nginx
+      domainname: svetlanaberrios.com
       logging:
         driver: json-file
         options:
           max-size: "10m"
           max-file: "5"
       volumes:
-        - ./html:/srv/docroot/
         - ./etc/ssl:/etc/nginx/ssl
         - ./etc/service.conf:/etc/nginx/service.conf
       ports:
