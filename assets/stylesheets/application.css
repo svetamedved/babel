@@ -1,0 +1,9 @@
+.carousel-caption {
+  position: relative;
+  color: black;
+  text-align: center;
+  left: inherit;
+  right: inherit;
+  bottom: inherit;
+}
+

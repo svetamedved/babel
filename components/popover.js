@@ -27,11 +27,8 @@ const Popover = (props) => {
   const renderSlides = (items) => {
     return items.map((item) => {
       return (
-        <CarouselItem
-          key={item.get('Question')}
-        >
-          <h4>{item.get('Question')}</h4>
-          <CarouselCaption captionText={item.get('Question')} captionHeader={item.get('Question')} />
+        <CarouselItem key={item.id}>
+          <CarouselCaption captionText={item.get('Question')} />
         </CarouselItem>
       );
     });
@@ -41,12 +38,11 @@ const Popover = (props) => {
      !questions ? (
       <p>Loading...</p>) : (
       <Modal centered isOpen={props.modal} className={props.className}>
+        <ModalHeader>To start answer a few questions</ModalHeader>
         <ModalBody>
-          <Carousel
-            activeIndex={activeIndex}
-          >
-            <CarouselIndicators items={questions} activeIndex={activeIndex} />
+          <Carousel activeIndex={activeIndex}>
             {renderSlides(questions)}
+            <CarouselIndicators items={questions} activeIndex={activeIndex} />
             <CarouselControl direction="prev" directionText="Previous" />
             <CarouselControl direction="next" directionText="Next" />
           </Carousel>

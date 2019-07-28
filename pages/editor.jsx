@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/stylesheets/application.css';
 import { useRouter } from 'next/router';
 import { Button, Container, Row, Col } from 'reactstrap';
 import React, { useEffect, useState } from 'react';

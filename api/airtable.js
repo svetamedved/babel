@@ -36,7 +36,7 @@ export default class Airtable {
     ids.forEach(function cbck(id) {
       this.findData(id, function(record) {
         fetchedRecords.push(record);
-        if (fetchedRecords.count == ids.count){
+        if (fetchedRecords.count == ids.count) {
           callback(fetchedRecords);
         }
       });
